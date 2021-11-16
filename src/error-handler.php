@@ -1,9 +1,14 @@
 <?php
 
-
-
 function setInternalServerError($errno, $errstr, $errfile, $errline){
+    
+    http_response_code(500);
+    
     echo '<h1>Error</h1>';
+
+    if(!DEBUG){
+        exit;
+    }
 
     switch ($errno) {
         case E_USER_ERROR:
