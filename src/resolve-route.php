@@ -1,8 +1,8 @@
 <?php
-var_dump($_SERVER);
+var_dump($_SERVER['REQUEST_URI']);
 function resolve($route){
    
-    $path = $_SERVER['PATH_INFO'] ?? '/';
+    $path = $_SERVER['REQUEST_URI'] ?? '/';
     
     $route = '/^' . str_replace('/', '\/', $route) . '$/';
     
