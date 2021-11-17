@@ -1,5 +1,5 @@
 <?php
-var_dump($_SERVER['REQUEST_URI']);
+
 function resolve($route){
    
     $path = $_SERVER['REQUEST_URI'] ?? '/';
