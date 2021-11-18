@@ -10,12 +10,15 @@ $pages_one = function($id){
 
 $pages_create = function(){
     //cadastra uma página
+    flash('Página criada com sucesso!', 'success');
 };
 
 $pages_edit = function($id){
     //edita uma página
+    flash('Página atualizada com sucesso!', 'success');
 };
 
 $pages_delete = function($id){
     //deleta uma página
+    flash('Página removida com sucesso!', 'success');
 };
