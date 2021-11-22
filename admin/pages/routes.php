@@ -18,7 +18,6 @@ if(resolve('/admin/pages/?')){
     render('admin/pages/view', 'admin', ['page' => $page]);
 
 }elseif($params = resolve('/admin/pages/(\d+)/edit/?')){
-    var_dump($_SERVER['REQUEST_METHOD']);
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $pages_edit($params[1]);
         return header('location: /admin/pages/' . $params[1]);

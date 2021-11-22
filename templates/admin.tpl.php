@@ -13,7 +13,7 @@
     <title>Painel Administrativo</title>
   </head>
   <body class="d-flex flex-column">
-    
+ 
     <div id="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a href="" class="navbar-brand">ADMIN</a>
@@ -50,10 +50,23 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="/resources/trix/trix.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         <?php flash(); ?>
+
+        confirmEl = document.querySelector('.confirm');
+
+        if(confirmEl){
+            confirmEl.addEventListener('click', function(e){
+                e.preventDefault();
+                if(confirm('Tem certeza que quer fazer isso?')){
+                    window.location = e.target.getAttribute('href');
+                }
+            });
+        }
     </script>
+
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
