@@ -1,6 +1,6 @@
 <?php
 
-function setInternalServerError($errno, $errstr, $errfile, $errline){
+function setInternalServerError($errno=null, $errstr=null, $errfile=null, $errline=null){
     
     http_response_code(500);
     
