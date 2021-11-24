@@ -46,12 +46,30 @@ $pages_create = function() use ($conn){
     return $stmt->execute();
 };
 
-$pages_edit = function($id){
-    //edita uma página
+$pages_edit = function($id) use ($conn){
+    
+    $data = pages_get_data('/admin/pages/' . $id .'/edit');
+
+    $sql = 'UPDATE pages SET title=?, body=?, url=?, updated=NOW() WHERE id =?';
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('sssi', $data['title'], $data['body'], $data['url'], $id);
+
+    flash('Página criada com sucesso!', 'success');
+
+    return $stmt->execute();
+
     flash('Página atualizada com sucesso!', 'success');
 };
 
-$pages_delete = function($id){
-    //deleta uma página
+$pages_delete = function($id) use ($conn){
+
+    $sql = 'DELETE FROM pages WHERE id=?';
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('i', $id);
+
     flash('Página removida com sucesso!', 'success');
+
+    return $stmt->execute();
 };
