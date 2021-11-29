@@ -9,6 +9,34 @@ if(resolve('/admin/?')){
 }elseif(resolve('/admin/users.*')){
     include __DIR__ . '/users/routes.php';
 
+}elseif(resolve('/admin/upload/image')){
+    $file = $_FILES['file'] ?? null;
+
+    if(empty($file)){
+        http_response_code(422);
+        echo 'Nenhum arquivo enviado!';
+        exit;
+    }
+
+    $allowedTypes = [
+        'image/gif',
+        'image/jpg',
+        'image/jpeg',
+        'image/png'
+    ];
+
+    if (!in_array($file['type'], $allowedTypes)){
+        http_response_code(422);
+        echo 'Tipo de arquivo não suportado!';
+        exit;
+    }
+
+    $name = uniqid(rand(), true) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+
+    move_uploaded_file($file['tmp_name'], __DIR__ . '/../public_html/upload/' . $name);
+
+    echo '/upload/' . $name; 
+
 }else{
     http_response_code(404);
     echo 'Página não encontrada!';

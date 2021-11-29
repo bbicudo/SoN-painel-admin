@@ -48,11 +48,50 @@
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="/js/jquery-3.6.0.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="/resources/trix/trix.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
+
+        document.addEventListener('trix-attachment-add', function(){
+            const attachment = event.attachment;
+
+            if(!attachment.file){
+                return;
+            }
+
+            const form = new FormData();
+
+            form.append('file', attachment.file);
+
+            $.ajax({
+                url: '/admin/upload/image',
+                method: 'POST',
+                data:form,
+                contentType: false,
+                processData: false,
+                xhr: function(){
+                    const xhr = $.ajaxSettings.xhr();
+                    xhr.upload.addEventListener('progress', function(e){
+                        let progress = e.loaded / e.total * 100;
+                        attachment.setUploadProgress(progress);
+                    });
+
+                    return xhr;
+
+                }
+            }).done(function(response){
+                attachment.setAttributes({
+                    url: response,
+                    href: response
+                });
+            }).fail(function(){
+                console.log('errado');
+            });
+        });
+
         <?php flash(); ?>
 
         confirmEl = document.querySelector('.confirm');
