@@ -17,7 +17,7 @@
     </div>
 
     <div class="form-group mb-3">
-        <input id="pagesBody" type="hidden" name="body" value='<?php echo $data['page']['body']; ?>'>
+        <input id="pagesBody" type="hidden" name="body" value="<?php echo htmlentities($data['page']['body']); ?>">
         <trix-editor input="pagesBody"></trix-editor>
     </div>
 

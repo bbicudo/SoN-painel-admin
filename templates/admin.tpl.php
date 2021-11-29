@@ -6,20 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link href="/resources/trix/trix.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="/css/style.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="/resources/trix/trix.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css"  crossorigin="anonymous">
 
     <title>Painel Administrativo</title>
   </head>
   <body class="d-flex flex-column">
  
     <div id="header">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a href="" class="navbar-brand">ADMIN</a>
-            <span class="navbar-text">
-                Painel administrativo do site
+        <nav class="navbar navbar-dark bg-dark">
+            <span>
+                <a href="/admin" class="navbar-brand">ADMIN</a>
+                <span class="navbar-text">
+                    Painel administrativo do site
+                </span>
             </span>
+            <a href="/admin/auth/logout" class="btn btn-danger me-5"><i class="fas fa-power-off"></i></a>
         </nav>
     </div>
 
@@ -31,10 +35,10 @@
                         <span class="nav-link text-white-50"><small>MENU</small></span>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/pages" class="nav-link active">Páginas</a>
+                        <a href="/admin/pages" class="nav-link <?php if(resolve('/admin/pages.*')): ?> active <?php endif; ?>"><i class="far fa-file-alt"></i> Páginas</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin/users" class="nav-link">Usuários</a>
+                        <a href="/admin/users" class="nav-link <?php if(resolve('/admin/users.*')): ?> active <?php endif; ?>"><i class="far fa-user"></i> Usuários</a>
                     </li>
                 </ul>
             </div>
