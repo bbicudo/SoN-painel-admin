@@ -27,7 +27,7 @@
 
     <div id="main">
         <div class="row justify-content-center">
-            <div id="content" class="col-4 align-self-center">
+            <div id="content" class="col-3 align-self-center">
                 <?php include $content; ?>
             </div>
         </div>
