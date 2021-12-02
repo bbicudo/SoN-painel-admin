@@ -17,3 +17,6 @@
 *.xlsx
 *.rar
 *.zip
+
+# Private Folders
+.Studio31/
